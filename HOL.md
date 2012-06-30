@@ -258,7 +258,7 @@ In this scenario you are going to configure a script to run when the machine boo
 
 In this step we will run sysprep to generalize the image which will allow multiple virtual machines to be created off it is all having the same customized settings (remote PowerShell enabled).
 
-1. In **Start** | **Run** Box Type _sysprep_. In the folder that comes up double click **sysprep.exe**.
+1. In **Start** | **Run** Box Type _c:\Windows\System32\sysprep\sysprep.exe_ and press Enter.
 
 2. Select **Generalize**, change **Shutdown** Options to _Shutdown_ and click **OK**.
 
