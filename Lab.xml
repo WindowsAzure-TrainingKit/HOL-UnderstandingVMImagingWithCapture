@@ -13,7 +13,8 @@
   <Version>1.0.1</Version>
   <Source></Source>
   <DependencyChecker></DependencyChecker>
-  <CustomProperties>    
+  <CustomProperties>  
+    	<Property Name="ContentType" Value="Scenario" />
 	<Property Name="GitHubRepository" Value="https://github.com/WindowsAzure-TrainingKit/HOL-UnderstandingVMImagingWithCapture/" />
   </CustomProperties>
 </Lab> 
