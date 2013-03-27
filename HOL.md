@@ -1,4 +1,4 @@
-﻿<a name="Title" />
+﻿b<a name="Title" />
 # Understanding Virtual Machine Imaging with Capture #
 ---
 
@@ -15,7 +15,7 @@ In this hands-on lab, you will learn how to:
 - Create a new virtual machine
 - Customize and generalize the virtual machine
 - Save the image to the image library
-- Provision New VMs based off of the image
+- Provision New Virtual Machines based off of the image
 
 <a name="Prerequisites" />
 ### Prerequisites ###
@@ -34,7 +34,7 @@ The following exercises make up this hands-on lab:
 1. [Creating a New Virtual Machine](#Exercise1)
 2. [Customize and Generalize the Virtual Machine](#Exercise2)
 3. [Saving an Image in the Image Library](#Exercise3)
-4. [Provision New VMs based off of the Image](#Exercise4)
+4. [Provision New Virtual Machines based off of the Image](#Exercise4)
 
 
 Estimated time to complete this lab: **60 minutes**
@@ -47,7 +47,7 @@ In this exercise you will walk through the steps of provisioning a new virtual m
 <a name="Ex1Task1" />
 #### Task 1: Creating a New Virtual Machine ####
 
-In this task you will use the Quick Create VM creation option to provision a virtual machine to be customized.
+In this task you will use the Quick Create Virtual Machine creation option to provision a virtual machine to be customized.
 
 1. Log in to the Windows Azure portal: https://manage.windowsazure.com using your Microsoft Account.
 
@@ -57,25 +57,25 @@ In this task you will use the Quick Create VM creation option to provision a vir
 
 	_Creating a Virtual Machine from Gallery_
 
-1. In the **VM OS Selection** page, click **Platform Images** and select **Windows Server 2008 R2 SP1**.
+1. In the **Virtual Machine Operation System Selection** page, click **Platform Images** and select **Windows Server 2008 R2 SP1**.
 
 	![Virtual Machine OS Selection](images/virtual-machine-os-selection.png?raw=true "Virtual Machine OS Selection")
 
 	_Virtual Machine OS Selection_
 
-1. In the **Virtual Machine Configuration** page, specify _imgtest1_ for the VM **Name** and set both password boxes. Leave the VM **Size** with _Small_ value.
+1. In the **Virtual Machine Configuration** page, specify _imgtest1_ for the Virtual Machine **Name** and set both password boxes. Leave the Virtual Machine **Size** with _Small_ value.
 
 	![Virtual Machine Configuration Page](images/virtual-machine-configuration-page.png?raw=true "Virtual Machine Configuration Page")
 
 	_Virtual Machine Configuration Page_
 
-1. In the **VM Mode** page, select **Standalone Virtual Machine** and set the **DNS Name**. Leave the remaining fields with their default values.
+1. In the **Virtual Machine Mode** page, select **Standalone Virtual Machine** and set the **DNS Name**. Leave the remaining fields with their default values.
 	
 	![Virtual Machine Mode page](images/virtual-machine-mode-page.png?raw=true "Virtual Machine Mode page")
 
 	_Virtual Machine Mode page_
 
-1. Finally, leave the **VM Options** page with the default values and finish the VM wizard.
+1. Finally, leave the **Virtual Machine Options** page with the default values and finish the Virtual Machine wizard.
 
 1. Wait until your virtual machine is created, you can check its status in the **Virtual Machines** page within Windows Azure Management portal. Then, click your Virtual Machine name to open the **Dashboard**.
 
@@ -83,7 +83,7 @@ In this task you will use the Quick Create VM creation option to provision a vir
 
 	_Virtual Machine Created_
 
-1. In the bottom menu, click **Connect** to download an _.rdp_ file to connect to the VM using Remote Desktop Connection.
+1. In the bottom menu, click **Connect** to download an _.rdp_ file to connect to the Virtual Machine using Remote Desktop Connection.
 
 
 	![Connect](images/connect.png?raw=true)
@@ -119,7 +119,9 @@ In this scenario you are going to configure a script to run when the machine boo
 
 1. Using Windows Explorer, create a folder in the **C:** drive called **EnablePSRemote**.
 
-1. Under **Tools** -> **Folder Options** -> **View**, uncheck **Hide Extensions for Known File Types**.
+1. Go to **Folder and Search options** under **Organize** menu
+
+1. Switch to **View** tab and_EnablePSRemote.ps1_ uncheck **Hide Extensions for Known File Types**.
 
 	![Hide Extensions for Known File Types](images/hide-extensions-for-known-file-types.png?raw=true "Hide Extensions for Known File Types")
 
@@ -229,7 +231,9 @@ In this scenario you are going to configure a script to run when the machine boo
 <a name="Ex2Task4" />
 #### Task 4: Configure a Startup Task for the cmd file ####
 
-1. In the **Run** box type _mmc.exe_ and click **OK**.
+1. Go to **Start** and click **Run** 
+
+1. In the **Run** box write _mmc.exe_ and click **OK**.
 
 1. In **File** | **Add/Remove Snap-In**, select **Group Policy Object** and then click **Add**. 
 
@@ -247,7 +251,7 @@ In this scenario you are going to configure a script to run when the machine boo
 
 1. Double Click **Startup** and click **Add**.
 
-1. Add the following to the **script name** box: _c:\EnablePSRemote\taskscheduler.cmd_ and click **OK** twice to exit the dialog.
+1. In the **Script Name** box and the following path: _c:\EnablePSRemote\taskscheduler.cmd_ and click **OK** twice to exit the dialog.
 
 	![configuretaskscheduler](images/configuretaskscheduler.png?raw=true)
 
@@ -256,11 +260,13 @@ In this scenario you are going to configure a script to run when the machine boo
 <a name="Ex2Task5" />
 #### Task 5: Generalize the Machine with SysPrep ####
 
-In this step we will run sysprep to generalize the image which will allow multiple virtual machines to be created off it is all having the same customized settings (remote PowerShell enabled).
+In this step we will run sysprep to generalize the image. It will allow multiple virtual machines to be created having the same customized settings (remote PowerShell enabled).
 
-1. In **Start** | **Run** Box Type _c:\Windows\System32\sysprep\sysprep.exe_ and press Enter.
+1. Go to **Start** and click **Run** 
 
-2. Select **Generalize**, change **Shutdown** Options to _Shutdown_ and click **OK**.
+1. In the **Run** box write _c:\Windows\System32\sysprep\sysprep.exe_ and press Enter.
+
+2. In the **System Cleanup Action** select **Generalize** checkbox and in the **Shutdown Options** select **Shutdown** and click **OK**.
 
 	![sysprep](images/sysprep.png?raw=true "sysprep")
 
@@ -271,14 +277,14 @@ In this step we will run sysprep to generalize the image which will allow multip
 
 In this exercise you are going to use the capture feature of Windows Azure IaaS to create a new image based off of an existing virtual machine (the previously created one).
 
->**Note:** Before proceeding, ensure the **imgtest1** VM is off. 
+>**Note:** Before proceeding, ensure the **imgtest1** Virtual Machine is off. Wait until the sysprep finishes and turns off the Virtual Machine
 
 <a name="Ex3Task1" />
 #### Task 1: Saving an Image in the Image Library ####
 
 1. Open the Windows Azure Portal and click **Virtual Machines**.
 
-1. Click the **imgtest1** Virtual Machine to open its **Dashboard**.
+1. Select the Virtual Machine you prepared in the previous exercise.
 
 	![Opening Virtual Machine Dashboard](images/opening-virtual-machine-dashboard.png?raw=true "Opening Virtual Machine Dashboard")
 
@@ -290,7 +296,7 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 
 	_Capturing Image_
 
-1. In the **Capture virtual machine** page, set the **Virtual Machine Name** to _remotepsimg_ and select **I have sysprepped the virtual machine**, then store it as an image.
+1. In the **Capture virtual machine** page, set the **Virtual Machine Name** to _remotepsvm1_ and select **I have sysprepped the virtual machine**, then store it as an image.
 
 	![capturedlg](images/capturedlg.png?raw=true)
 
@@ -298,33 +304,46 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 
 
 <a name="Exercise4"></a>
-### Exercise 4: Provision New VMs based on the created Image ###
+### Exercise 4: Provision New Virtual Machines based on the created Image ###
 
 In this exercise you are going to create a new virtual machine using the image you created in exercise 3. 
 
-> **Note:** Before proceeding wait until the **remotepsimg** image finished provisioning (view the status of the **imgtest1** VM). You may have to refresh your browser to see the new image in the create virtual machine dialog.
+> **Note:** Before proceeding wait until the image finished provisioning You can switch to Images tab under Virtual Machines to check the status of the image.
 
 <a name="Ex4Task1" />
-#### Task 1: Create a new VM using a base-image ####
+#### Task 1: Create a new Virtual Machine using a base-image ####
 
 1. Log in to the Windows Azure Portal:  https://manage.windowsazure.com.
 
-2. Click **New** | **Virtual Machine** | **Quick Create**.
-
-1. Set the **DNS Name** to _remotepsimg_ and select the **Image** you created previously (e.g. _remotepsimg_).
-
-1. Then, specify a **password** for the Administrator login and click **Create Virtual Machine**.
-
+1. Click **New** | **Compute** | **Virtual Machine** | **From Gallery**.
 	![createvmfromimage](images/createvmfromimage.png?raw=true)
 
 	_Creating Virtual Machine from Image_
 
-1. Once the Virtual Machine is provisioned, go to its **Dashboard** and click **Connect**. When prompted login with _Administrator_ credentials.
+1. In the **Virtual Machine operating system selection** switch to **MY IMAGES** and select **you-image-name**
 
+	![myimagetab](images/virtualmachineimageselection.png?raw=true)
 
+	_Virtual Machine operating system selection_
+
+1. Set the **Virtual Machine Name** to _remotepsvm1_ and complete the Administrator Password
+
+	![myimagetab](images/virtualmachinename.png?raw=true)
+
+	_Virtual Machine configurtation_
+
+1. Set the **DNS Name** to _remotepsvm1_ and select the **Image** you created previously (e.g. _remotepsvm1_).
+
+	![myimagetab](images/virtualmachinedns.png?raw=true)
+
+	_Virtual Machine mode_
+
+1. Leave the **Virtual Machine options** with the default value and complete the operation.
+
+1. Once the Virtual Machine is provisioned, click **Connect** at the bottom of the screen. When prompted login with _Administrator_ credentials.
 
 <a name="Ex4Task2" />
-#### Task 2: Create an Endpoint to Allow Traffic to the VM ####
+#### Task 2: Create an Endpoint to Allow Traffic to the Virtual Machine ####
 
 1. Open the Windows Azure Portal from https://manage.windowsazure.com and click **Virtual Machines**.
 
@@ -346,17 +365,19 @@ In this exercise you are going to create a new virtual machine using the image y
 <a name="Ex4Task3" />
 #### Task 3: Connect from a Remote Client using PowerShell ####
 
-1. To connect remotely you will need some information regarding the VM. To obtain this information, you will log in to the Windows Azure Portal and go to your VM's **Dashboard**.
+1. To connect remotely you will need some information regarding the Virtual Machine. To obtain this information, you will log in to the Windows Azure Portal and go to your Virtual Machine's **Dashboard**.
 
-1. In the **Dashboard** page, locate and take note of the Public DNS (i.e. **URL** prefix).
+1. In the **Dashboard** page, locate and take note of the DNS.
 
-	![Obtaining VM information](images/obtaining-vm-information.png?raw=true "Obtaining VM information")
+	![Obtaining VM information](images/obtaining-vm-information.png?raw=true "Obtaining Virtual Machine information")
 
-	_Obtaining VM information_
+	_Obtaining Virtual Machine information_
 
-1. If not already open, open a **Windows PowerShell** console from **Start** | **All Programs** | **Accessories**.
+1. If not already open, Go to Search tab in your machine and in the Search App box type Powershell.
 
-1. Execute the following command to test the VM connection. Update the placeholders with your VMs hostname. 
+1. Open **Windows Powershell** from the result page
+
+1. Execute the following command to test the Virtual Machine connection. Update the placeholders with your Virtual Machines hostname. 
 	
 	<!-- mark:1 -->
 	````PowerShell
@@ -364,7 +385,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	````
 
-1. To test that you were successfully connected to the VM, you will run the following commands to see the remote file system. Notice that at the left of your prompt you can see the host name that you are connected to.
+1. To test that you were successfully connected to the Virtual Machine, you will run the following commands to see the remote file system. Notice that at the left of your prompt you can see the host name that you are connected to.
 
 	````CMD
 	cd\
