@@ -1,4 +1,4 @@
-﻿b<a name="Title" />
+<a name="Title" />
 # Understanding Virtual Machine Imaging with Capture #
 ---
 
@@ -23,19 +23,16 @@ In this hands-on lab, you will learn how to:
 You must have the following items to complete this lab:
 
 - [Windows Azure PowerShell CmdLets](http://msdn.microsoft.com/en-us/library/windowsazure/jj156055)
-- A Windows Azure subscription with the Virtual Machines Preview enabled - [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
-
->**Note:** This lab was designed to use Windows 7 Operating System.
+- A Windows Azure subscription - [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
 
 <a name="Exercises" />
 ##Exercises##
-The following exercises make up this hands-on lab:
+The following is required to complete this hands-on lab:
 
 1. [Creating a New Virtual Machine](#Exercise1)
 2. [Customize and Generalize the Virtual Machine](#Exercise2)
 3. [Saving an Image in the Image Library](#Exercise3)
 4. [Provision New Virtual Machines based off of the Image](#Exercise4)
-
 
 Estimated time to complete this lab: **60 minutes**
 
