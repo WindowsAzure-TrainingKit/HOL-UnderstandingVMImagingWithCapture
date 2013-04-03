@@ -305,7 +305,7 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 
 In this exercise you are going to create a new virtual machine using the image you created in exercise 3. 
 
-> **Note:** Before proceeding wait until the image finished provisioning You can switch to Images tab under Virtual Machines to check the status of the image.
+> **Note:** Before proceeding wait until the image finished provisioning You can switch to the **Images** tab under **Virtual Machines** to check the status of the image.
 
 <a name="Ex4Task1" />
 #### Task 1: Create a new Virtual Machine using a base-image ####
