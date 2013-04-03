@@ -382,6 +382,8 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	````
 
+	>**Note:** To Configure the same scenario for a domain joined computer you will need to use -Authentication Negotiate instead of Basic.
+
 1. To test that you were successfully connected to the Virtual Machine, you will run the following commands to see the remote file system. Notice that at the left of your prompt you can see the host name that you are connected to.
 
 	````CMD
@@ -402,8 +404,3 @@ By completing this Hands-on Lab you have learned how to:
  - Configure PowerShell for remoting via HTTPS 
  - Customize and capture a virtual machine to the image library
  - Run remote commands on a virtual machine in Windows Azure IaaS
-
-<a name="Appendix" />
-##Appendix##
-
->**Note:** To Configure the same scenario for a domain joined computer you will need to use -Authentication Negotiate instead of Basic.
