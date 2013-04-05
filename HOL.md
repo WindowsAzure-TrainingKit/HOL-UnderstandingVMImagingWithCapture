@@ -1,9 +1,9 @@
-<a name="Title" />
+﻿<a name="Title" />
 # Understanding Virtual Machine Imaging with Capture #
 ---
 
 <a name="Overview" />
-##Overview##
+## Overview ##
 
 In this hands-on lab you will walk through creating a customized virtual machine that is customized to be remotely manageable via PowerShell. You will then learn how to generalize it and save it is an image so that all new virtual machines provisioned from it will be remotely manageable by default.
 
@@ -26,7 +26,7 @@ You must have the following items to complete this lab:
 - A Windows Azure subscription - [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
 
 <a name="Exercises" />
-##Exercises##
+## Exercises ##
 The following is required to complete this hands-on lab:
 
 1. [Creating a New Virtual Machine](#Exercise1)
@@ -37,7 +37,7 @@ The following is required to complete this hands-on lab:
 Estimated time to complete this lab: **60 minutes**
 
 <a name="Exercise1"></a>
-###Exercise 1: Creating a New Virtual Machine###
+### Exercise 1: Creating a New Virtual Machine ###
 
 In this exercise you will walk through the steps of provisioning a new virtual machine and enabling Windows Remote Management. 
 
@@ -50,25 +50,25 @@ In this task you will use the Quick Create Virtual Machine creation option to pr
 
 1. Click **New**, then select **Virtual Machine** | **From Gallery**.
 
-	![Creating a Virtual Machine from Gallery](images/creating-a-virtual-machine-from-gallery.png?raw=true "Creating a Virtual Machine from Gallery")
+	![Creating a Virtual Machine from Gallery](Images/creating-a-virtual-machine-from-gallery.png?raw=true "Creating a Virtual Machine from Gallery")
 
 	_Creating a Virtual Machine from Gallery_
 
 1. In the **Virtual Machine Operation System Selection** page, click **Platform Images** and select **Windows Server 2008 R2 SP1**.
 
-	![Virtual Machine OS Selection](images/virtual-machine-os-selection.png?raw=true "Virtual Machine OS Selection")
+	![Virtual Machine OS Selection](Images/virtual-machine-os-selection.png?raw=true "Virtual Machine OS Selection")
 
 	_Virtual Machine OS Selection_
 
 1. In the **Virtual Machine Configuration** page, specify _imgtest1_ for the Virtual Machine **Name** and set both password boxes. Leave the Virtual Machine **Size** with _Small_ value.
 
-	![Virtual Machine Configuration Page](images/virtual-machine-configuration-page.png?raw=true "Virtual Machine Configuration Page")
+	![Virtual Machine Configuration Page](Images/virtual-machine-configuration-page.png?raw=true "Virtual Machine Configuration Page")
 
 	_Virtual Machine Configuration Page_
 
 1. In the **Virtual Machine Mode** page, select **Standalone Virtual Machine** and set the **DNS Name**. Leave the remaining fields with their default values.
 	
-	![Virtual Machine Mode page](images/virtual-machine-mode-page.png?raw=true "Virtual Machine Mode page")
+	![Virtual Machine Mode page](Images/virtual-machine-mode-page.png?raw=true "Virtual Machine Mode page")
 
 	_Virtual Machine Mode page_
 
@@ -76,14 +76,14 @@ In this task you will use the Quick Create Virtual Machine creation option to pr
 
 1. Wait until your virtual machine is created, you can check its status in the **Virtual Machines** page within Windows Azure Management portal. Then, click your Virtual Machine name to open the **Dashboard**.
 
-	![Virtual Machine Created](images/virtual-machine-created.png?raw=true "Virtual Machine Created")
+	![Virtual Machine Created](Images/virtual-machine-created.png?raw=true "Virtual Machine Created")
 
 	_Virtual Machine Created_
 
 1. In the bottom menu, click **Connect** to download an _.rdp_ file to connect to the Virtual Machine using Remote Desktop Connection.
 
 
-	![Connect](images/connect.png?raw=true)
+	![Connect](Images/connect.png?raw=true)
 
 	_Connecting to the Virtual Machine_
 
@@ -120,7 +120,7 @@ In this scenario you are going to configure a script to run when the machine boo
 
 1. Switch to **View** tab and_EnablePSRemote.ps1_ uncheck **Hide Extensions for Known File Types**.
 
-	![Hide Extensions for Known File Types](images/hide-extensions-for-known-file-types.png?raw=true "Hide Extensions for Known File Types")
+	![Hide Extensions for Known File Types](Images/hide-extensions-for-known-file-types.png?raw=true "Hide Extensions for Known File Types")
 
 	_Hide Extensions for Known File Types_
 
@@ -236,13 +236,13 @@ In this scenario you are going to configure a script to run when the machine boo
 
 1. Accept the Defaults, click **Finish** and then click **OK**.
 
-	![Group Policy Objects](images/group-policy-objects.png?raw=true "Group Policy Objects")
+	![Group Policy Objects](Images/group-policy-objects.png?raw=true "Group Policy Objects")
 
 	_Group Policy Objects_
 
 1. Expand **Local Computer Policy** | **Computer Configuration** | **Windows Settings** and then click **Scripts**.
 
-	![Local Computer Policy](images/local-computer-policy.png?raw=true "Local Computer Policy")
+	![Local Computer Policy](Images/local-computer-policy.png?raw=true "Local Computer Policy")
 
 	_Local Computer Policy_
 
@@ -250,7 +250,7 @@ In this scenario you are going to configure a script to run when the machine boo
 
 1. In the **Script Name** box and the following path: _c:\EnablePSRemote\taskscheduler.cmd_ and click **OK** twice to exit the dialog.
 
-	![configuretaskscheduler](images/configuretaskscheduler.png?raw=true)
+	![configuretaskscheduler](Images/configuretaskscheduler.png?raw=true)
 
 	_Configuring Task Scheduler_
 
@@ -265,7 +265,7 @@ In this step we will run sysprep to generalize the image. It will allow multiple
 
 2. In the **System Cleanup Action** select **Generalize** checkbox and in the **Shutdown Options** select **Shutdown** and click **OK**.
 
-	![sysprep](images/sysprep.png?raw=true "sysprep")
+	![sysprep](Images/sysprep.png?raw=true "sysprep")
 
 	_Sysprep dialog_
 
@@ -283,19 +283,19 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 
 1. Select the Virtual Machine you prepared in the previous exercise.
 
-	![Opening Virtual Machine Dashboard](images/opening-virtual-machine-dashboard.png?raw=true "Opening Virtual Machine Dashboard")
+	![Opening Virtual Machine Dashboard](Images/opening-virtual-machine-dashboard.png?raw=true "Opening Virtual Machine Dashboard")
 
 	_Opening Virtual Machine Dashboard_
 
 1. Click **Capture** at the bottom of the screen.
 
-	![Capturing Image](images/capturing-image.png?raw=true "Capturing Image")
+	![Capturing Image](Images/capturing-image.png?raw=true "Capturing Image")
 
 	_Capturing Image_
 
 1. In the **Capture virtual machine** page, set the **Virtual Machine Name** to _remotepsvm1_ and select **I have sysprepped the virtual machine**, then store it as an image.
 
-	![capturedlg](images/capturedlg.png?raw=true)
+	![capturedlg](Images/capturedlg.png?raw=true)
 
 	_Image Details_
 
@@ -313,25 +313,25 @@ In this exercise you are going to create a new virtual machine using the image y
 1. Log in to the Windows Azure Portal:  https://manage.windowsazure.com.
 
 1. Click **New** | **Compute** | **Virtual Machine** | **From Gallery**.
-	![createvmfromimage](images/createvmfromimage.png?raw=true)
+	![createvmfromimage](Images/createvmfromimage.png?raw=true)
 
 	_Creating Virtual Machine from Image_
 
 1. In the **Virtual Machine operating system selection** switch to **MY IMAGES** and select **you-image-name**
 
-	![myimagetab](images/virtualmachineimageselection.png?raw=true)
+	![myimagetab](Images/virtualmachineimageselection.png?raw=true)
 
 	_Virtual Machine operating system selection_
 
 1. Set the **Virtual Machine Name** to _remotepsvm1_ and complete the Administrator Password
 
-	![myimagetab](images/virtualmachinename.png?raw=true)
+	![myimagetab](Images/virtualmachinename.png?raw=true)
 
 	_Virtual Machine configurtation_
 
 1. Set the **DNS Name** to _remotepsvm1_ and select the **Image** you created previously (e.g. _remotepsvm1_).
 
-	![myimagetab](images/virtualmachinedns.png?raw=true)
+	![myimagetab](Images/virtualmachinedns.png?raw=true)
 
 	_Virtual Machine mode_
 
@@ -346,7 +346,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 2. Click on the **remotepsvm1** Virtual Machine to open its **Dashboard** and then click **Endpoints**.
 
-	![Virtual Machine Endpoints](images/virtual-machine-endpoints.png?raw=true "Virtual Machine Endpoints")
+	![Virtual Machine Endpoints](Images/virtual-machine-endpoints.png?raw=true "Virtual Machine Endpoints")
 
 	_Virtual Machine Endpoints_
 
@@ -354,7 +354,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 5. In the **Specify Endpoint Details** page, use the following settings:
 
-	![add-endpoint](images/add-endpoint.png?raw=true)
+	![add-endpoint](Images/add-endpoint.png?raw=true)
 
 
 >**Note:** Before Proceeding Ensure the Endpoint has Completed Configuration
@@ -366,7 +366,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 1. In the **Dashboard** page, locate and take note of the DNS.
 
-	![Obtaining VM information](images/obtaining-vm-information.png?raw=true "Obtaining Virtual Machine information")
+	![Obtaining VM information](Images/obtaining-vm-information.png?raw=true "Obtaining Virtual Machine information")
 
 	_Obtaining Virtual Machine information_
 
@@ -391,14 +391,14 @@ In this exercise you are going to create a new virtual machine using the image y
 	dir
 	````
 
-	![remote-prompt](images/remote-prompt.png?raw=true)
+	![remote-prompt](Images/remote-prompt.png?raw=true)
 
 	_Remote File System_
 
 ---
 
 <a name="Summary" />
-##Summary##
+## Summary ##
 By completing this Hands-on Lab you have learned how to:
 
  - Configure PowerShell for remoting via HTTPS 
