@@ -32,7 +32,7 @@ The following is required to complete this hands-on lab:
 1. [Creating a New Virtual Machine](#Exercise1)
 2. [Customize and Generalize the Virtual Machine](#Exercise2)
 3. [Saving an Image in the Image Library](#Exercise3)
-4. [Provision New Virtual Machines based off of the Image](#Exercise4)
+4. [Provision New Virtual Machines based on the created Image](#Exercise4)
 
 Estimated time to complete this lab: **60 minutes**
 
@@ -48,7 +48,7 @@ In this task you will use the Quick Create Virtual Machine creation option to pr
 
 1. Log in to the Windows Azure portal: https://manage.windowsazure.com using your Microsoft Account.
 
-1. Click **New**, then select **Virtual Machine** | **From Gallery**.
+1. Click **New**, then select **Compute** | **Virtual Machine** | **From Gallery**.
 
 	![Creating a Virtual Machine from Gallery](Images/creating-a-virtual-machine-from-gallery.png?raw=true "Creating a Virtual Machine from Gallery")
 
@@ -118,7 +118,7 @@ In this scenario you are going to configure a script to run when the machine boo
 
 1. Go to **Folder and Search options** under **Organize** menu
 
-1. Switch to **View** tab and_EnablePSRemote.ps1_ uncheck **Hide Extensions for Known File Types**.
+1. Switch to **View** tab and uncheck **Hide Extensions for Known File Types**.
 
 	![Hide Extensions for Known File Types](Images/hide-extensions-for-known-file-types.png?raw=true "Hide Extensions for Known File Types")
 
@@ -293,7 +293,7 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 
 	_Capturing Image_
 
-1. In the **Capture virtual machine** page, set the **Virtual Machine Name** to _remotepsvm1_ and select **I have sysprepped the virtual machine**, then store it as an image.
+1. In the **Capture virtual machine** page, set the **Image Name** and select **I have run Sysprep on the virtual machine**, then store it as an image.
 
 	![capturedlg](Images/capturedlg.png?raw=true)
 
@@ -305,7 +305,7 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 
 In this exercise you are going to create a new virtual machine using the image you created in exercise 3. 
 
-> **Note:** Before proceeding wait until the image finished provisioning You can switch to the **Images** tab under **Virtual Machines** to check the status of the image.
+> **Note:** Before proceeding wait until the image finishes provisioning. You can switch to the **Images** tab under **Virtual Machines** to check the status of the image.
 
 <a name="Ex4Task1" />
 #### Task 1: Create a new Virtual Machine using a base-image ####
@@ -317,19 +317,19 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	_Creating Virtual Machine from Image_
 
-1. In the **Virtual Machine operating system selection** switch to **MY IMAGES** and select **you-image-name**
+1. In the **Virtual Machine operating system selection** switch to **MY IMAGES** and select the image you created previously.
 
 	![myimagetab](Images/virtualmachineimageselection.png?raw=true)
 
 	_Virtual Machine operating system selection_
 
-1. Set the **Virtual Machine Name** to _remotepsvm1_ and complete the Administrator Password
+1. Set the **Virtual Machine Name** to _remotepsvm1_ and complete the Administrator Password.
 
 	![myimagetab](Images/virtualmachinename.png?raw=true)
 
 	_Virtual Machine configurtation_
 
-1. Set the **DNS Name** to _remotepsvm1_ and select the **Image** you created previously (e.g. _remotepsvm1_).
+1. Set the **DNS Name** to a new unique name and click **Next**.
 
 	![myimagetab](Images/virtualmachinedns.png?raw=true)
 
@@ -357,12 +357,12 @@ In this exercise you are going to create a new virtual machine using the image y
 	![add-endpoint](Images/add-endpoint.png?raw=true)
 
 
->**Note:** Before Proceeding Ensure the Endpoint has Completed Configuration
+	>**Note:** Before proceeding, ensure the endpoint configuration is complete.
 
 <a name="Ex4Task3" />
 #### Task 3: Connect from a Remote Client using PowerShell ####
 
-1. To connect remotely you will need some information regarding the Virtual Machine. To obtain this information, you will log in to the Windows Azure Portal and go to your Virtual Machine's **Dashboard**.
+1. To connect remotely you will need some information regarding the Virtual Machine. To obtain this information, you will log in to the Windows Azure Portal and go to your virtual machine's **Dashboard**.
 
 1. In the **Dashboard** page, locate and take note of the DNS.
 
@@ -370,21 +370,19 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	_Obtaining Virtual Machine information_
 
-1. If not already open, Go to Search tab in your machine and in the Search App box type Powershell.
+1. Open **Windows Powershell**.
 
-1. Open **Windows Powershell** from the result page
-
-1. Execute the following command to test the Virtual Machine connection. Update the placeholders with your Virtual Machines hostname. 
+1. Execute the following command to test the virtual machine connection. Update the placeholder with your virtual machine dns name. 
 	
 	<!-- mark:1 -->
 	````PowerShell
-	enter-pssession -computername [HOSTNAME].cloudapp.net -authentication Basic -Credential administrator -UseSSL -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)
+	enter-pssession -computername [DNS-NAME] -authentication Basic -Credential administrator -UseSSL -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)
 
 	````
 
-	>**Note:** To Configure the same scenario for a domain joined computer you will need to use -Authentication Negotiate instead of Basic.
+	>**Note:** To configure the same scenario for a domain joined computer you will need to use -Authentication Negotiate instead of Basic.
 
-1. To test that you were successfully connected to the Virtual Machine, you will run the following commands to see the remote file system. Notice that at the left of your prompt you can see the host name that you are connected to.
+1. To test that you were successfully connected to the virtual machine, you will run the following commands to see the remote file system. Notice that at the left of your prompt you can see the host name that you are connected to.
 
 	````CMD
 	cd\
