@@ -33,7 +33,7 @@ In order to execute the exercises in this hands-on lab you need to set up your e
 
 1. Open Windows Explorer and browse to the lab's **Source** folder.
 
-1. Execute the **Setup.cmd** file with Administrator privileges to launch the setup process that will configure your environment and install the Visual Studio code snippets for this lab.
+1. Execute the **Setup.cmd** file with Administrator privileges to launch the setup process that will configure your environment.
 
 1. If the User Account Control dialog is shown, confirm the action to proceed.
 
