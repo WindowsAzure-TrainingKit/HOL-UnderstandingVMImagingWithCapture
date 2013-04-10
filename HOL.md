@@ -74,7 +74,7 @@ In this task you will use the Quick Create Virtual Machine creation option to pr
 
 	_Virtual Machine OS Selection_
 
-1. In the **Virtual Machine Configuration** page, specify _imgtest1_ for the Virtual Machine **Name** and set both password boxes. Leave the Virtual Machine **Size** with _Small_ value.
+1. In the **Virtual Machine Configuration** page, specify a virtual machine **Name**, an administrator user name and password. Leave the default virtual machine **Size**.
 
 	![Virtual Machine Configuration Page](Images/virtual-machine-configuration-page.png?raw=true "Virtual Machine Configuration Page")
 
@@ -96,7 +96,6 @@ In this task you will use the Quick Create Virtual Machine creation option to pr
 
 1. In the bottom menu, click **Connect** to download an _.rdp_ file to connect to the Virtual Machine using Remote Desktop Connection.
 
-
 	![Connect](Images/connect.png?raw=true)
 
 	_Connecting to the Virtual Machine_
@@ -104,6 +103,8 @@ In this task you will use the Quick Create Virtual Machine creation option to pr
 	>**Note:** When asked for Login, write the same credentials you used while creating the Virtual Machine.
 
 1. Do not close the connection, you will use it in the following exercise.
+
+---
 
 <a name="Exercise2"></a>
 ### Exercise 2: Customize and Generalize the Virtual Machine ###
@@ -130,7 +131,7 @@ In this scenario you are going to configure a script to run when the machine boo
 
 1. Using Windows Explorer, create a folder in the **C:** drive called **EnablePSRemote**.
 
-1. Go to **Folder and Search options** under **Organize** menu
+1. Go to **Folder and Search options** under **Organize** menu.
 
 1. Switch to **View** tab and uncheck **Hide Extensions for Known File Types**.
 
@@ -138,11 +139,11 @@ In this scenario you are going to configure a script to run when the machine boo
 
 	_Hide Extensions for Known File Types_
 
-1. Right click in **EnablePSRemote** window, select **New** | **Text Document** and name it _EnablePSRemote.ps1_.
+1. Right-click in **EnablePSRemote** window, select **New** | **Text Document** and name it _EnablePSRemote.ps1_.
 
 1. Open the file using a text editor (e.g. _notepad_).
 
-1. Copy and Paste the following script into **EnablePSRemote.ps1**.
+1. Copy and paste the following script into **EnablePSRemote.ps1**.
 
 	````PowerShell
 	function Create-Certificate($hostname) {
@@ -213,8 +214,6 @@ In this scenario you are going to configure a script to run when the machine boo
 
 	# Enable Basic Authentication
 	WinRM set winrm/config/service/auth '@{Basic="true"}'
-
-
 	````
 
 1. Save and Close the file.
@@ -242,7 +241,7 @@ In this scenario you are going to configure a script to run when the machine boo
 <a name="Ex2Task4" />
 #### Task 4: Configure a Startup Task for the cmd file ####
 
-1. Go to **Start** and click **Run** 
+1. Go to **Start** and click **Run**. 
 
 1. In the **Run** box write _mmc.exe_ and click **OK**.
 
@@ -283,6 +282,8 @@ In this step we will run sysprep to generalize the image. It will allow multiple
 
 	_Sysprep dialog_
 
+---
+
 <a name="Exercise3" />
 ###Exercise 3: Saving an Image in the Image Library###
 
@@ -313,6 +314,7 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 
 	_Image Details_
 
+---
 
 <a name="Exercise4"></a>
 ### Exercise 4: Provision New Virtual Machines based on the created Image ###
@@ -324,7 +326,7 @@ In this exercise you are going to create a new virtual machine using the image y
 <a name="Ex4Task1" />
 #### Task 1: Create a new Virtual Machine using a base-image ####
 
-1. Log in to the Windows Azure Portal:  https://manage.windowsazure.com.
+1. Log in to the Windows Azure Portal: https://manage.windowsazure.com.
 
 1. Click **New** | **Compute** | **Virtual Machine** | **From Gallery**.
 	![createvmfromimage](Images/createvmfromimage.png?raw=true)
@@ -337,7 +339,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	_Virtual Machine operating system selection_
 
-1. Set the **Virtual Machine Name** to _remotepsvm1_ and complete the Administrator Password.
+1. Set the **Virtual Machine Name** to _remotepsvm1_ and complete the administrator username and password.
 
 	![myimagetab](Images/virtualmachinename.png?raw=true)
 
@@ -366,10 +368,9 @@ In this exercise you are going to create a new virtual machine using the image y
 
 4. Click **Add Endpoint** towards the bottom of the page, select **Add Endpoint** option and click **next**. 
 
-5. In the **Specify Endpoint Details** page, use the following settings:
+5. In the **Specify Endpoint Details** page, use the following settings.
 
 	![add-endpoint](Images/add-endpoint.png?raw=true)
-
 
 	>**Note:** Before proceeding, ensure the endpoint configuration is complete.
 
@@ -390,8 +391,7 @@ In this exercise you are going to create a new virtual machine using the image y
 	
 	<!-- mark:1 -->
 	````PowerShell
-	enter-pssession -computername [DNS-NAME] -authentication Basic -Credential administrator -UseSSL -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)
-
+	Enter-PSSession -computername [DNS-NAME] -authentication Basic -Credential administrator -UseSSL -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)
 	````
 
 	>**Note:** To configure the same scenario for a domain joined computer you will need to use -Authentication Negotiate instead of Basic.
