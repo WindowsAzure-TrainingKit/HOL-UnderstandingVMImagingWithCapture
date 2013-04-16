@@ -4,7 +4,7 @@
 
 ### Introduction ###
 
-Hands-On Labs are sets of step-by-step guides that are designed to help you learn how to use key Windows Azure services and features.  Each Lab provides instructions to guide you through the process of developing a complete application.
+Hands-on labs are sets of step-by-step guides that are designed to help you learn how to use key Windows Azure services and features.  Each Lab provides instructions to guide you through the process of developing a complete application.
 
 In this hands-on lab you will walk through creating a new virtual machine that is customized to be remotely manageable via PowerShell. You will then learn how to generalize it and save it is an image so that all new virtual machines provisioned from it will be remotely manageable by default.
 

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DependencyCheckerConfiguration version="2.0">
+	<title>Understanding Virtual Machine Imaging with Capture</title>
+	<dependencies>
+	
+		<dependency 
+			hint="PowerShell2" 
+			name="Windows PowerShell 2.0" 
+			helpLink="http://microsoft.com/powershell/" 
+			disableSkip="false"
+			type="WebPI" />
+			
+    </dependencies>
+</DependencyCheckerConfiguration>
