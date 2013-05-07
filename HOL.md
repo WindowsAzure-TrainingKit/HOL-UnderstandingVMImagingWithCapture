@@ -23,20 +23,7 @@ You must have the following items to complete this lab:
 
 - A Windows Azure subscription - [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
 
-Additionally, you must complete the Provisioning a Windows Azure Virtual Machine HOL
-
-<a name="Setup" />
-### Setup ###
-
-In order to execute the exercises in this hands-on lab you need to set up your environment.
-
-1. Open Windows Explorer and browse to the lab's **Source** folder.
-
-1. Execute the **Setup.cmd** file with Administrator privileges to launch the setup process that will configure your environment.
-
-1. If the User Account Control dialog is shown, confirm the action to proceed.
-
-> **Note:** Make sure you have checked all the dependencies for this lab before running the setup. 
+Additionally, you must complete the Provisioning a Windows Azure Virtual Machine HOL.
 
 <a name="Exercises" />
 ## Exercises ##
