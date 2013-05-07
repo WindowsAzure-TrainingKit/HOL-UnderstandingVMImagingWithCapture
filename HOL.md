@@ -5,7 +5,7 @@
 <a name="Overview" />
 ## Overview ##
 
-In this hands-on lab you will walk through creating a customized virtual machine that is customized to be remotely manageable via PowerShell. You will then learn how to generalize it and save it is an image so that all new virtual machines provisioned from it will be remotely manageable by default.
+In this hands-on lab you will walk through creating a customized virtual machine that is customized with Web Server role enabled. You will then learn how to generalize it and save it as an image so that all new virtual machines provisioned from it will have Web Server role enabled by default.
 
 <a name="Objectives" />
 ### Objectives ###
@@ -103,7 +103,11 @@ In this exercise we are going to customize the Virtual Machine by enabling the W
 
 In this step we will run sysprep to generalize the image. It will allow multiple virtual machines to be created having the same customized settings (remote PowerShell enabled).
 
-1. Type **Windows Key + R** to open the Run dialog.
+1. On the Start menu, start typing _run_, and then click Run.
+
+	![Open Run dialog](Images/start-run.png?raw=true)
+
+	_Open Run dialog_
 
 1. In the **Run** box write _c:\Windows\System32\sysprep\sysprep.exe_ and press Enter.
 
@@ -206,9 +210,9 @@ In this exercise you are going to create a new virtual machine using the image y
 	>**Note:** Before proceeding, ensure the endpoint configuration is complete.
 
 <a name="Ex4Task3" />
-#### Task 3: Connect from a Remote Client using PowerShell ####
+#### Task 3: Navigate to the IIS default web page ####
 
-1. To connect remotely you will need some information regarding the Virtual Machine. To obtain this information, you will log in to the Windows Azure Portal and go to your virtual machine's **Dashboard**.
+1. Log in to the Windows Azure Portal and go to your virtual machine's **Dashboard**.
 
 1. In the **Dashboard** page, locate and take note of the DNS.
 
@@ -216,34 +220,18 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	_Obtaining Virtual Machine information_
 
-1. Open **Windows Powershell**.
+1. Open a web browser and navigate to the DNS address from the previous step. In this case _http://customizedvm1.cloudapp.net/_.
 
-1. Execute the following command to test the virtual machine connection. Update the placeholder with your virtual machine dns name. 
-	
-	<!-- mark:1 -->
-	````PowerShell
-	Enter-PSSession -computername [DNS-NAME] -authentication Basic -Credential administrator -UseSSL -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)
-	````
+	![IIS default web page](Images/ie-iis.png?raw=true "IIS default web page")
 
-	>**Note:** To configure the same scenario for a domain joined computer you will need to use -Authentication Negotiate instead of Basic.
-
-1. To test that you were successfully connected to the virtual machine, you will run the following commands to see the remote file system. Notice that at the left of your prompt you can see the host name that you are connected to.
-
-	````CMD
-	cd\
-	dir
-	````
-
-	![remote-prompt](Images/remote-prompt.png?raw=true)
-
-	_Remote File System_
+	_IIS default web page_
 
 ---
 
 <a name="Summary" />
 ## Summary ##
 By completing this Hands-on Lab you have learned how to:
-
- - Configure PowerShell for remoting via HTTPS 
+ 
  - Customize and capture a virtual machine to the image library
- - Run remote commands on a virtual machine in Windows Azure IaaS
+ - Provision New Virtual Machines based off of the image
+ - Navigate to a virtual machine through HTTP
