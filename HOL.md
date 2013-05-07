@@ -120,7 +120,7 @@ In this step we will run sysprep to generalize the image. It will allow multiple
 
 In this exercise you are going to use the capture feature of Windows Azure IaaS to create a new image based off of an existing virtual machine (the previously created one).
 
->**Note:** Before proceeding, ensure the **imgtest1** Virtual Machine is off. Wait until the sysprep finishes and turns off the Virtual Machine
+>**Note:** Before proceeding, ensure the **DC01** Virtual Machine is off. Wait until the sysprep finishes and turns off the Virtual Machine
 
 <a name="Ex3Task1" />
 #### Task 1: Saving an Image in the Image Library ####
@@ -170,7 +170,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	_Virtual Machine operating system selection_
 
-1. Set the **Virtual Machine Name** to _remotepsvm1_ and complete the administrator username and password.
+1. Set the **Virtual Machine Name** to _customizedvm1_ and complete the administrator username and password.
 
 	![myimagetab](Images/virtualmachinename.png?raw=true)
 
@@ -191,7 +191,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 1. Open the Windows Azure Portal from https://manage.windowsazure.com and click **Virtual Machines**.
 
-2. Click on the **remotepsvm1** Virtual Machine to open its **Dashboard** and then click **Endpoints**.
+2. Click on the **customizedvm1** Virtual Machine to open its **Dashboard** and then click **Endpoints**.
 
 	![Virtual Machine Endpoints](Images/virtual-machine-endpoints.png?raw=true "Virtual Machine Endpoints")
 
