@@ -175,8 +175,6 @@ In this exercise you are going to create a new virtual machine using the image y
 
 1. Leave the **Virtual Machine options** with the default value and complete the operation.
 
-1. Once the Virtual Machine is provisioned, click **Connect** at the bottom of the screen. When prompted login with _Administrator_ credentials.
-
 <a name="Ex3Task2" />
 #### Task 2: Create an Endpoint to Allow Traffic to the Virtual Machine ####
 
@@ -188,7 +186,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	_Virtual Machine Endpoints_
 
-4. Click **Add Endpoint** towards the bottom of the page, select **Add Endpoint** option and click **next**. 
+4. Click **Add Endpoint** towards the bottom of the page, select **Add Endpoint** option and click **Next**. 
 
 5. In the **Specify Endpoint Details** page, use the following settings.
 
