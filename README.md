@@ -1,4 +1,4 @@
-# Understanding Virtual Machine Imaging with Capture #
+﻿# Understanding Virtual Machine Imaging with Capture #
 
 ## Hands-on Lab ##
 
@@ -6,7 +6,7 @@
 
 Hands-on labs are sets of step-by-step guides that are designed to help you learn how to use key Windows Azure services and features.  Each Lab provides instructions to guide you through the process of developing a complete application.
 
-In this hands-on lab you will walk through creating a new virtual machine that is customized to be remotely manageable via PowerShell. You will then learn how to generalize it and save it is an image so that all new virtual machines provisioned from it will be remotely manageable by default.
+In this hands-on lab you will walk through creating a customized virtual machine that is customized with Web Server role enabled. You will then learn how to generalize it and save it as an image so that all new virtual machines provisioned from it will have Web Server role enabled by default.
 
 > **Note:** You can download the latest build of the Windows Azure Training Kit which includes a tested version of this HOL from here: http://bit.ly/WindowsAzureTK.
 

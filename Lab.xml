@@ -7,10 +7,10 @@
   <Author>
     <Name></Name>
   </Author>
-  <Description>In this hands-on lab you will walk through creating a new virtual machine that is customized to be remotely manageable via PowerShell. You will then learn how to generalize it and save it is an image so that all new virtual machines provisioned from it will be remotely manageable by default.</Description>
+  <Description>In this hands-on lab you will walk through creating a new virtual machine that is customized with Web Server role enabled. You will then learn how to generalize it and save it as an image so that all new virtual machines provisioned from it will have Web Server role enabled by default.</Description>
   <Document ConversionType="Html">HOL.md</Document>
   <Title>Understanding Virtual Machine Imaging with Capture</Title>
-  <Version>1.0.3</Version>
+  <Version>2.0.0</Version>
   <Source></Source>
   <DependencyChecker></DependencyChecker>
   <CustomProperties>

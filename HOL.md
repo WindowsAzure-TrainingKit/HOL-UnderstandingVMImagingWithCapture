@@ -5,15 +5,14 @@
 <a name="Overview" />
 ## Overview ##
 
-In this hands-on lab you will walk through creating a customized virtual machine that is customized to be remotely manageable via PowerShell. You will then learn how to generalize it and save it is an image so that all new virtual machines provisioned from it will be remotely manageable by default.
+In this hands-on lab you will walk through creating a customized virtual machine that is customized with Web Server role enabled. You will then learn how to generalize it and save it as an image so that all new virtual machines provisioned from it will have Web Server role enabled by default.
 
 <a name="Objectives" />
 ### Objectives ###
 
 In this hands-on lab, you will learn how to:
 
-- Create a new virtual machine
-- Customize and generalize the virtual machine
+- Customize and generalize a virtual machine
 - Save the image to the image library
 - Provision New Virtual Machines based off of the image
 
@@ -22,75 +21,30 @@ In this hands-on lab, you will learn how to:
 
 You must have the following items to complete this lab:
 
-- [Windows Azure PowerShell CmdLets](http://msdn.microsoft.com/en-us/library/windowsazure/jj156055)
 - A Windows Azure subscription - [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
-
-
-<a name="Setup" />
-### Setup ###
-
-In order to execute the exercises in this hands-on lab you need to set up your environment.
-
-1. Open Windows Explorer and browse to the lab's **Source** folder.
-
-1. Execute the **Setup.cmd** file with Administrator privileges to launch the setup process that will configure your environment.
-
-1. If the User Account Control dialog is shown, confirm the action to proceed.
-
-> **Note:** Make sure you have checked all the dependencies for this lab before running the setup. 
+- Complete the _Provisioning a Windows Azure Virtual Machine_ HOL.
 
 <a name="Exercises" />
 ## Exercises ##
 The following is required to complete this hands-on lab:
 
-1. [Creating a New Virtual Machine](#Exercise1)
-2. [Customize and Generalize the Virtual Machine](#Exercise2)
-3. [Saving an Image in the Image Library](#Exercise3)
-4. [Provision New Virtual Machines based on the created Image](#Exercise4)
+1. [Customizing and Generalizing the Virtual Machine](#Exercise1)
+2. [Saving an Image in the Image Library](#Exercise2)
+3. [Provisioning New Virtual Machines based on an Image](#Exercise3)
 
 Estimated time to complete this lab: **60 minutes**
 
 <a name="Exercise1"></a>
-### Exercise 1: Creating a New Virtual Machine ###
+### Exercise 1: Customizing and Generalizing the Virtual Machine ###
 
-In this exercise you will walk through the steps of provisioning a new virtual machine and enabling Windows Remote Management. 
+In this exercise we are going to customize the Virtual Machine by enabling the Web Server role in Windows Server 2012. 
 
 <a name="Ex1Task1" />
-#### Task 1: Creating a New Virtual Machine ####
+#### Task 1: Enabling Web Server role####
 
-In this task you will use the Quick Create Virtual Machine creation option to provision a virtual machine to be customized.
+1. Go to the **Virtual Machines** page within the Windows Azure Management portal and select the Virtual Machine you created by following the _Provisioning a Windows Azure Virtual Machine_ HOL.
 
-1. Log in to the Windows Azure portal: https://manage.windowsazure.com using your Microsoft Account.
-
-1. Click **New**, then select **Compute** | **Virtual Machine** | **From Gallery**.
-
-	![Creating a Virtual Machine from Gallery](Images/creating-a-virtual-machine-from-gallery.png?raw=true "Creating a Virtual Machine from Gallery")
-
-	_Creating a Virtual Machine from Gallery_
-
-1. In the **Virtual Machine Operation System Selection** page, click **Platform Images** and select **Windows Server 2008 R2 SP1**.
-
-	![Virtual Machine OS Selection](Images/virtual-machine-os-selection.png?raw=true "Virtual Machine OS Selection")
-
-	_Virtual Machine OS Selection_
-
-1. In the **Virtual Machine Configuration** page, specify a virtual machine **Name**, an administrator user name and password. Leave the default virtual machine **Size**.
-
-	![Virtual Machine Configuration Page](Images/virtual-machine-configuration-page.png?raw=true "Virtual Machine Configuration Page")
-
-	_Virtual Machine Configuration Page_
-
-1. In the **Virtual Machine Mode** page, select **Standalone Virtual Machine** and set the **DNS Name**. Leave the remaining fields with their default values.
-	
-	![Virtual Machine Mode page](Images/virtual-machine-mode-page.png?raw=true "Virtual Machine Mode page")
-
-	_Virtual Machine Mode page_
-
-1. Finally, leave the **Virtual Machine Options** page with the default values and finish the Virtual Machine wizard.
-
-1. Wait until your virtual machine is created, you can check its status in the **Virtual Machines** page within Windows Azure Management portal. Then, click your Virtual Machine name to open the **Dashboard**.
-
-	![Virtual Machine Created](Images/virtual-machine-created.png?raw=true "Virtual Machine Created")
+	![Virtual Machine Created](Images/virtual-machine-created.png?raw=true "Virtual Machine Selected")
 
 	_Virtual Machine Created_
 
@@ -102,181 +56,48 @@ In this task you will use the Quick Create Virtual Machine creation option to pr
 
 	>**Note:** When asked for Login, write the same credentials you used while creating the Virtual Machine.
 
-1. Do not close the connection, you will use it in the following exercise.
+1. If not already opened, open the Server Manager from the Quick Launch bar and click **Add roles and features**.
 
----
+	![Add roles and features](Images/add-roles.png?raw=true)
 
-<a name="Exercise2"></a>
-### Exercise 2: Customize and Generalize the Virtual Machine ###
+	_Add roles and features_
 
-In this exercise we are going to enable Windows Remote Management, configure SSL and allow remote PowerShell. 
+1. Click **Next** in the _Before you begin_ screen.
 
-<a name="Ex2Task1" />
-#### Task 1: Configure PowerShell for Script Execution in the New Virtual Machine####
+1. In the _Installation Type_ screen select **Role-based or feature-based installation** and click **Next**.
 
-1. Under **Start** | **All Programs** | **Accessories** start **Windows PowerShell**.
+1. In the following screen, make sure your server is selected and click **Next**.
 
-1. Execute the following command in the PowerShell Console. When prompted, choose **Yes**.
+1. In the _Server Roles_ screen, look for **Web Server (IIS)** role and mark the checkbox. When prompted for addtitional features click **Add features**.
 
-	````PowerShell
-	Set-ExecutionPolicy remotesigned
-	````
+	![Select Web Server role](Images/add-roles-select-role.png?raw=true)
 
-1. Close the PowerShell console.
+	_Select Web Server role_
 
-<a name="Ex2Task2" />
-#### Task 2: Configure the HTTPS Endpoint for WinRM/PowerShell ####
+1. Click **Next** in the _Features_ and _Web Server Role (IIS)_ screens.
 
-In this scenario you are going to configure a script to run when the machine boots. This script will create a self-signed certificate and configure Windows Remote Management to listen on port 5986 using SSL.
+1. In the _Role Services_ screen leave the default options and click **Next**.
 
-1. Using Windows Explorer, create a folder in the **C:** drive called **EnablePSRemote**.
+	![Select Role Services role](Images/add-roles-web-server-services.png?raw=true)
 
-1. Go to **Folder and Search options** under **Organize** menu.
+	_Select Role Services_
 
-1. Switch to **View** tab and uncheck **Hide Extensions for Known File Types**.
+1. In the _Confirmation_ screen click **Install**. Once the process is finished click **Close**.
 
-	![Hide Extensions for Known File Types](Images/hide-extensions-for-known-file-types.png?raw=true "Hide Extensions for Known File Types")
+<a name="Ex1Task2" />
+#### Task 2: Generalizing the Machine with SysPrep ####
 
-	_Hide Extensions for Known File Types_
+In this step we will run sysprep to generalize the image. It will allow multiple virtual machines to be created having the same customized settings (Web Server role enabled).
 
-1. Right-click in **EnablePSRemote** window, select **New** | **Text Document** and name it _EnablePSRemote.ps1_.
+1. On the Start menu, start typing _run_, and then click Run.
 
-1. Open the file using a text editor (e.g. _notepad_).
+	![Open Run dialog](Images/start-run.png?raw=true)
 
-1. Copy and paste the following script into **EnablePSRemote.ps1**.
-
-	````PowerShell
-	function Create-Certificate($hostname) {
-		$name = new-object -com "X509Enrollment.CX500DistinguishedName.1"
-		$name.Encode("CN=$hostname", 0)
-	 
-		$key = new-object -com "X509Enrollment.CX509PrivateKey.1"
-		$key.ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
-		$key.KeySpec = 1
-		$key.Length = 1024
-		$key.SecurityDescriptor = "D:PAI(A;;0xd01f01ff;;;SY)(A;;0xd01f01ff;;;BA)(A;;0x80120089;;;NS)"
-		$key.MachineContext = 1
-		$key.Create()
-	 
-		$serverauthoid = new-object -com "X509Enrollment.CObjectId.1"
-		$serverauthoid.InitializeFromValue("1.3.6.1.5.5.7.3.1")
-		$ekuoids = new-object -com "X509Enrollment.CObjectIds.1"
-		$ekuoids.add($serverauthoid)
-		$ekuext = new-object -com "X509Enrollment.CX509ExtensionEnhancedKeyUsage.1"
-		$ekuext.InitializeEncode($ekuoids)
-	 
-		$cert = new-object -com "X509Enrollment.CX509CertificateRequestCertificate.1"
-		$cert.InitializeFromPrivateKey(2, $key, "")
-		$cert.Subject = $name
-		$cert.Issuer = $cert.Subject
-		$cert.NotBefore = get-date
-		$cert.NotAfter = $cert.NotBefore.AddDays(180)
-		$cert.X509Extensions.Add($ekuext)
-		$cert.Encode()
-	 
-		$enrollment = new-object -com "X509Enrollment.CX509Enrollment.1"
-		$enrollment.InitializeFromRequest($cert)
-		$certdata = $enrollment.CreateRequest(0)
-		$enrollment.InstallResponse(2, $certdata, 0, "")
-	}
-
-	$hostname = $env:COMPUTERNAME
-
-	$output = & winrm g winrm/config/Listener?Address=*+Transport=HTTPS | Out-String
-
-	if($lastexitcode -eq 0)
-	{
-		# HTTPS Listener Already Configured Return
-		return
-	}
-
-	# HTTPS Listener Not Configured - Configure Now
-
-	# Enable PS remoting
-	Enable-PSRemoting -Force
-
-	# Create the self signed certificate (Only for testing)
-	Create-Certificate $hostname
-
-	# Get the certificate thumbprint
-	$certTp = get-childitem -path cert:\LocalMachine\My* -Recurse | Where { ($_.Issuer -eq "CN=" + $hostname) -and ($_.Subject -eq "CN=" + $hostname) } | Select Thumbprint
-	$certTp = $certTP.Thumbprint
-
-	# Open up 5986 for WinRM HTTPS
-	& netsh advfirewall firewall delete rule name="WinRM HTTPS" dir=in protocol=TCP localport=5986
-	& netsh advfirewall firewall add rule name="WinRM HTTPS" dir=in action=allow protocol=TCP localport=5986
-
-	# Specify the newly created cert thumbprint 
-	$certString = "@{Hostname=""" + $hostname + """;CertificateThumbprint=""" + $certTp + """}"
-
-	# Create the HTTPS listener
-	& WinRM create winrm/config/Listener?Address=*+Transport=HTTPS $certString
-
-	# Enable Basic Authentication
-	WinRM set winrm/config/service/auth '@{Basic="true"}'
-	````
-
-1. Save and Close the file.
-
-<a name="Ex2Task3" />
-#### Task 3: Create a batch file to use the task scheduler to launch the script on boot ####
-
-1. In the **EnablePSRemote** folder, create a new text file named _taskscheduler.cmd_.
-
-2. Open the file using a text editor (e.g. _notepad_).
-
-3. Copy and Paste the following commands (replace [YOUR-PASSWORD] with the password you specified for the Virtual Machine in both locations).
-
-	````PowerShell
-	net user scheduser [YOUR-PASSWORD] /add
-	net localgroup Administrators scheduser /add
-
-	schtasks /CREATE /TN "EnablePS-Remote" /SC ONCE /SD 01/01/2020 /ST 00:00:00 /RL HIGHEST /RU scheduser /RP [YOUR-PASSWORD] /TR "powershell -file C:\EnablePSRemote\EnablePSRemote.ps1" /F 
-
-	schtasks /RUN /TN "EnablePS-Remote"
-	````
-
-1. Save and close the file.
-
-<a name="Ex2Task4" />
-#### Task 4: Configure a Startup Task for the cmd file ####
-
-1. Go to **Start** and click **Run**. 
-
-1. In the **Run** box write _mmc.exe_ and click **OK**.
-
-1. In **File** | **Add/Remove Snap-In**, select **Group Policy Object** and then click **Add**. 
-
-1. Accept the Defaults, click **Finish** and then click **OK**.
-
-	![Group Policy Objects](Images/group-policy-objects.png?raw=true "Group Policy Objects")
-
-	_Group Policy Objects_
-
-1. Expand **Local Computer Policy** | **Computer Configuration** | **Windows Settings** and then click **Scripts**.
-
-	![Local Computer Policy](Images/local-computer-policy.png?raw=true "Local Computer Policy")
-
-	_Local Computer Policy_
-
-1. Double Click **Startup** and click **Add**.
-
-1. In the **Script Name** box and the following path: _c:\EnablePSRemote\taskscheduler.cmd_ and click **OK** twice to exit the dialog.
-
-	![configuretaskscheduler](Images/configuretaskscheduler.png?raw=true)
-
-	_Configuring Task Scheduler_
-
-<a name="Ex2Task5" />
-#### Task 5: Generalize the Machine with SysPrep ####
-
-In this step we will run sysprep to generalize the image. It will allow multiple virtual machines to be created having the same customized settings (remote PowerShell enabled).
-
-1. Go to **Start** and click **Run** 
+	_Open Run dialog_
 
 1. In the **Run** box write _c:\Windows\System32\sysprep\sysprep.exe_ and press Enter.
 
-2. In the **System Cleanup Action** select **Generalize** checkbox and in the **Shutdown Options** select **Shutdown** and click **OK**.
+1. In the **System Cleanup Action** select **Generalize** checkbox and in the **Shutdown Options** select **Shutdown** and click **OK**.
 
 	![sysprep](Images/sysprep.png?raw=true "sysprep")
 
@@ -284,14 +105,14 @@ In this step we will run sysprep to generalize the image. It will allow multiple
 
 ---
 
-<a name="Exercise3" />
-###Exercise 3: Saving an Image in the Image Library###
+<a name="Exercise2" />
+###Exercise 2: Saving an Image in the Image Library###
 
 In this exercise you are going to use the capture feature of Windows Azure IaaS to create a new image based off of an existing virtual machine (the previously created one).
 
->**Note:** Before proceeding, ensure the **imgtest1** Virtual Machine is off. Wait until the sysprep finishes and turns off the Virtual Machine
+>**Note:** Before proceeding, ensure the **DC01** Virtual Machine is off. Wait until the sysprep finishes and turns off the Virtual Machine
 
-<a name="Ex3Task1" />
+<a name="Ex2Task1" />
 #### Task 1: Saving an Image in the Image Library ####
 
 1. Open the Windows Azure Portal and click **Virtual Machines**.
@@ -316,15 +137,15 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 
 ---
 
-<a name="Exercise4"></a>
-### Exercise 4: Provision New Virtual Machines based on the created Image ###
+<a name="Exercise3"></a>
+### Exercise 3: Provisioning New Virtual Machines based on an Image ###
 
-In this exercise you are going to create a new virtual machine using the image you created in exercise 3. 
+In this exercise you are going to create a new virtual machine using the image you created in exercise 2. 
 
 > **Note:** Before proceeding wait until the image finishes provisioning. You can switch to the **Images** tab under **Virtual Machines** to check the status of the image.
 
-<a name="Ex4Task1" />
-#### Task 1: Create a new Virtual Machine using a base-image ####
+<a name="Ex3Task1" />
+#### Task 1: Creating a Virtual Machine Based on an Image ####
 
 1. Log in to the Windows Azure Portal: https://manage.windowsazure.com.
 
@@ -339,7 +160,7 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	_Virtual Machine operating system selection_
 
-1. Set the **Virtual Machine Name** to _remotepsvm1_ and complete the administrator username and password.
+1. Set the **Virtual Machine Name** to _customizedvm1_ and complete the administrator username and password.
 
 	![myimagetab](Images/virtualmachinename.png?raw=true)
 
@@ -353,20 +174,18 @@ In this exercise you are going to create a new virtual machine using the image y
 
 1. Leave the **Virtual Machine options** with the default value and complete the operation.
 
-1. Once the Virtual Machine is provisioned, click **Connect** at the bottom of the screen. When prompted login with _Administrator_ credentials.
-
-<a name="Ex4Task2" />
-#### Task 2: Create an Endpoint to Allow Traffic to the Virtual Machine ####
+<a name="Ex3Task2" />
+#### Task 2: Creating an Endpoint to Allow Traffic to the Virtual Machine ####
 
 1. Open the Windows Azure Portal from https://manage.windowsazure.com and click **Virtual Machines**.
 
-2. Click on the **remotepsvm1** Virtual Machine to open its **Dashboard** and then click **Endpoints**.
+2. Click on the **customizedvm1** Virtual Machine to open its **Dashboard** and then click **Endpoints**.
 
 	![Virtual Machine Endpoints](Images/virtual-machine-endpoints.png?raw=true "Virtual Machine Endpoints")
 
 	_Virtual Machine Endpoints_
 
-4. Click **Add Endpoint** towards the bottom of the page, select **Add Endpoint** option and click **next**. 
+4. Click **Add Endpoint** towards the bottom of the page, select **Add Endpoint** option and click **Next**. 
 
 5. In the **Specify Endpoint Details** page, use the following settings.
 
@@ -374,10 +193,10 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	>**Note:** Before proceeding, ensure the endpoint configuration is complete.
 
-<a name="Ex4Task3" />
-#### Task 3: Connect from a Remote Client using PowerShell ####
+<a name="Ex3Task3" />
+#### Task 3: Navigating to the IIS default web page ####
 
-1. To connect remotely you will need some information regarding the Virtual Machine. To obtain this information, you will log in to the Windows Azure Portal and go to your virtual machine's **Dashboard**.
+1. Log in to the Windows Azure Portal and go to your virtual machine's **Dashboard**.
 
 1. In the **Dashboard** page, locate and take note of the DNS.
 
@@ -385,34 +204,20 @@ In this exercise you are going to create a new virtual machine using the image y
 
 	_Obtaining Virtual Machine information_
 
-1. Open **Windows Powershell**.
+1. Open a web browser and navigate to the DNS address from the previous step. In this case _http://customizedvm1.cloudapp.net/_.
 
-1. Execute the following command to test the virtual machine connection. Update the placeholder with your virtual machine dns name. 
-	
-	<!-- mark:1 -->
-	````PowerShell
-	Enter-PSSession -computername [DNS-NAME] -authentication Basic -Credential administrator -UseSSL -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck)
-	````
+	![IIS default web page](Images/ie-iis.png?raw=true "IIS default web page")
 
-	>**Note:** To configure the same scenario for a domain joined computer you will need to use -Authentication Negotiate instead of Basic.
+	_IIS default web page_
 
-1. To test that you were successfully connected to the virtual machine, you will run the following commands to see the remote file system. Notice that at the left of your prompt you can see the host name that you are connected to.
-
-	````CMD
-	cd\
-	dir
-	````
-
-	![remote-prompt](Images/remote-prompt.png?raw=true)
-
-	_Remote File System_
+	>**Note:** Since the virtual machine was created using your custom image with Web Server role enabled, you get the IIS default web page when you browse to the virtual machine.
 
 ---
 
 <a name="Summary" />
 ## Summary ##
 By completing this Hands-on Lab you have learned how to:
-
- - Configure PowerShell for remoting via HTTPS 
+ 
  - Customize and capture a virtual machine to the image library
- - Run remote commands on a virtual machine in Windows Azure IaaS
+ - Provision New Virtual Machines based off of the image
+ - Navigate to a virtual machine through HTTP
