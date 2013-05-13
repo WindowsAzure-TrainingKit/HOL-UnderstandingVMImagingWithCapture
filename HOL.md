@@ -22,26 +22,25 @@ In this hands-on lab, you will learn how to:
 You must have the following items to complete this lab:
 
 - A Windows Azure subscription - [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
-
-Additionally, you must complete the _Provisioning a Windows Azure Virtual Machine_ HOL.
+- Complete the _Provisioning a Windows Azure Virtual Machine_ HOL.
 
 <a name="Exercises" />
 ## Exercises ##
 The following is required to complete this hands-on lab:
 
-1. [Customize and Generalize the Virtual Machine](#Exercise1)
+1. [Customizing and Generalizing the Virtual Machine](#Exercise1)
 2. [Saving an Image in the Image Library](#Exercise2)
-3. [Provision New Virtual Machines based on the created Image](#Exercise3)
+3. [Provisioning New Virtual Machines based on an Image](#Exercise3)
 
 Estimated time to complete this lab: **60 minutes**
 
 <a name="Exercise1"></a>
-### Exercise 1: Customize and Generalize the Virtual Machine ###
+### Exercise 1: Customizing and Generalizing the Virtual Machine ###
 
 In this exercise we are going to customize the Virtual Machine by enabling the Web Server role in Windows Server 2012. 
 
 <a name="Ex1Task1" />
-#### Task 1: Enable Web Server role####
+#### Task 1: Enabling Web Server role####
 
 1. Go to the **Virtual Machines** page within the Windows Azure Management portal and select the Virtual Machine you created by following the _Provisioning a Windows Azure Virtual Machine_ HOL.
 
@@ -86,7 +85,7 @@ In this exercise we are going to customize the Virtual Machine by enabling the W
 1. In the _Confirmation_ screen click **Install**. Once the process is finished click **Close**.
 
 <a name="Ex1Task2" />
-#### Task 2: Generalize the Machine with SysPrep ####
+#### Task 2: Generalizing the Machine with SysPrep ####
 
 In this step we will run sysprep to generalize the image. It will allow multiple virtual machines to be created having the same customized settings (Web Server role enabled).
 
@@ -139,14 +138,14 @@ In this exercise you are going to use the capture feature of Windows Azure IaaS 
 ---
 
 <a name="Exercise3"></a>
-### Exercise 3: Provision New Virtual Machines based on the created Image ###
+### Exercise 3: Provisioning New Virtual Machines based on an Image ###
 
 In this exercise you are going to create a new virtual machine using the image you created in exercise 2. 
 
 > **Note:** Before proceeding wait until the image finishes provisioning. You can switch to the **Images** tab under **Virtual Machines** to check the status of the image.
 
 <a name="Ex3Task1" />
-#### Task 1: Create a new Virtual Machine using a base-image ####
+#### Task 1: Creating a Virtual Machine Based on an Image ####
 
 1. Log in to the Windows Azure Portal: https://manage.windowsazure.com.
 
@@ -176,7 +175,7 @@ In this exercise you are going to create a new virtual machine using the image y
 1. Leave the **Virtual Machine options** with the default value and complete the operation.
 
 <a name="Ex3Task2" />
-#### Task 2: Create an Endpoint to Allow Traffic to the Virtual Machine ####
+#### Task 2: Creating an Endpoint to Allow Traffic to the Virtual Machine ####
 
 1. Open the Windows Azure Portal from https://manage.windowsazure.com and click **Virtual Machines**.
 
@@ -195,7 +194,7 @@ In this exercise you are going to create a new virtual machine using the image y
 	>**Note:** Before proceeding, ensure the endpoint configuration is complete.
 
 <a name="Ex3Task3" />
-#### Task 3: Navigate to the IIS default web page ####
+#### Task 3: Navigating to the IIS default web page ####
 
 1. Log in to the Windows Azure Portal and go to your virtual machine's **Dashboard**.
 
